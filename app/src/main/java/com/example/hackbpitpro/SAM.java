@@ -1,11 +1,13 @@
 package com.example.hackbpitpro;
 
+import android.content.Intent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -39,6 +41,11 @@ public class SAM extends AppCompatActivity implements TextToSpeech.OnInitListene
     SuggestionsAdapter suggestionsAdapter;
     LayoutInflater layoutInflater;
 
+     TextView navHadLeft,navVisionRight;
+     ImageView navImagLeft,navImagRight;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +56,10 @@ public class SAM extends AppCompatActivity implements TextToSpeech.OnInitListene
         btnSpeakout=findViewById(R.id.fancyButton4);
         btnsaver=findViewById(R.id.fancyButton6);
         materialSearchBar=findViewById(R.id.searchBar);
-
+        navHadLeft=findViewById(R.id.navHADText);
+        navVisionRight=findViewById(R.id.navVISIONText);
+        navImagLeft=findViewById(R.id.navImageLeftSamAct);
+        navImagRight=findViewById(R.id.navImageRightVisionAct);
         saveToggler=false;
         searchResults=new ArrayList<>();
         layoutInflater= (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -121,9 +131,76 @@ public class SAM extends AppCompatActivity implements TextToSpeech.OnInitListene
             }
         });
 
+       navHadLeft.setOnLongClickListener(new View.OnLongClickListener() {
+           @Override
+           public boolean onLongClick(View v) {
+
+
+               v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+               tts.speak("Switching to SAM",TextToSpeech.QUEUE_FLUSH,null);
+
+               if(tts.isSpeaking()) {
+                   Intent intent = new Intent(SAM.this, HearingAssist.class);
+                   startActivity(intent);
+                   finish();
+               }
+
+               return false;
+           }
+       });
+
+        navImagLeft.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                tts.speak("Switching to SAM",TextToSpeech.QUEUE_FLUSH,null);
+
+                if(tts.isSpeaking()) {
+                    Intent intent = new Intent(SAM.this, HearingAssist.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+                return false;
+            }
+        });
+
+
+      navImagRight.setOnLongClickListener(new View.OnLongClickListener() {
+          @Override
+          public boolean onLongClick(View v) {
+
+              v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+              tts.speak("Switching to SAM",TextToSpeech.QUEUE_FLUSH,null);
+
+              if(tts.isSpeaking()) {
+                  Intent intent = new Intent(SAM.this, MainActivity.class);
+                  startActivity(intent);
+                  finish();
+              }
 
 
 
+              return false;
+          }
+      });
+
+      navVisionRight.setOnLongClickListener(new View.OnLongClickListener() {
+          @Override
+          public boolean onLongClick(View v) {
+              v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+              tts.speak("Switching to SAM",TextToSpeech.QUEUE_FLUSH,null);
+
+              if(tts.isSpeaking()) {
+                  Intent intent = new Intent(SAM.this, MainActivity.class);
+                  startActivity(intent);
+                  finish();
+              }
+
+              return false;
+          }
+      });
 
 
     }
@@ -188,13 +265,6 @@ public class SAM extends AppCompatActivity implements TextToSpeech.OnInitListene
         }
 
     }
-
-
-
-
-
-
-
 
     @Override
     public void onInit(int status) {

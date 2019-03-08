@@ -111,6 +111,7 @@
     </mehdi.sakout.fancybuttons.FancyButton>
 
     <mehdi.sakout.fancybuttons.FancyButton
+        fancy:fb_textFont="bold"
         android:id="@+id/fancyButton4"
         android:layout_width="111dp"
         android:layout_height="57dp"
@@ -134,6 +135,7 @@
         fancy:fb_text="SPEAK" />
 
     <mehdi.sakout.fancybuttons.FancyButton
+        fancy:fb_textFont="bold"
         android:id="@+id/fancyButton6"
         fancy:fb_radius="15dp"
         fancy:fb_text="SAVE"
@@ -152,6 +154,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fancyButton4"
         app:layout_constraintVertical_bias="0.486" />
+
+    <TextView
+
+        android:id="@+id/navHADText"
+        android:layout_width="106dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="28dp"
+        android:fontFamily="@font/shrikhand"
+        android:text="H.A.D."
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#FFFFFF"
+
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+
+        android:id="@+id/navVISIONText"
+        android:layout_width="126dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="28dp"
+        android:fontFamily="@font/shrikhand"
+        android:text="VISION"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+
+        android:id="@+id/navImageLeftSamAct"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/navigator_left_white"
+
+        />
+
+    <ImageView
+
+        android:id="@+id/navImageRightVisionAct"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="22dp"
+
+        android:src="@drawable/navigator_right_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
+
 
 
 </android.support.constraint.ConstraintLayout>

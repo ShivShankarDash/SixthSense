@@ -8,9 +8,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,9 +50,11 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
     private FancyButton cambutton;
     private CircleImageView circleImageView;
     private TextView desc;
-    private TextView NavigatorLeftSam;
+    private TextView NavigatorLeftSam,NavigatorRightHad;
     private TextToSpeech tts;
     private FancyButton OcrButton,VisionButton;
+    private ImageView navLeft,navRight;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         OcrButton=findViewById(R.id.fancyButtonocr);
         VisionButton=findViewById(R.id.fancyVision);
         VisionButton.setEnabled(false);
-
+        NavigatorRightHad=findViewById(R.id.navHad);
+        navLeft=findViewById(R.id.navImageLeft);
+        navRight=findViewById(R.id.navImageRight);
 
 
         tts=new TextToSpeech(this,this);
@@ -94,9 +100,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
                 }
 
-
-
-
             }
 
             @Override
@@ -109,7 +112,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
             @Override
             public void onClick(View v) {
                 tts.speak("VISION MODE ACTIVATED",TextToSpeech.QUEUE_FLUSH,null);
-                cambutton.setIconResource(R.drawable.camera_icon);
+                v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                cambutton.setIconResource(R.drawable.camera_enchanced);
                 VisionButton.setEnabled(false);
                 OcrButton.setEnabled(true);
 
@@ -123,8 +127,9 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
              public void onClick(View v) {
 
                  tts.speak("OCR MODE ACTIVATED",TextToSpeech.QUEUE_FLUSH,null);
+                 v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                  OcrButton.setEnabled(false);
-                 cambutton.setIconResource(R.drawable.ocr_mode);
+                 cambutton.setIconResource(R.drawable.ocr_dark_new);
                  VisionButton.setEnabled(true);
 
 
@@ -137,6 +142,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
        cambutton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+
+               v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                cameraView.captureImage();
            }
        });
@@ -145,8 +152,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
            @Override
            public boolean onLongClick(View v) {
 
-
-           tts.speak("Navigating to SAM",TextToSpeech.QUEUE_FLUSH,null);
+               v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+           tts.speak("Switching to SAM",TextToSpeech.QUEUE_FLUSH,null);
 
            if(tts.isSpeaking()) {
                Intent intent = new Intent(MainActivity.this, SAM.class);
@@ -157,6 +164,62 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
                return false;
            }
        });
+
+       navLeft.setOnLongClickListener(new View.OnLongClickListener() {
+           @Override
+           public boolean onLongClick(View v) {
+
+               v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+               tts.speak("Switching to SAM",TextToSpeech.QUEUE_FLUSH,null);
+
+               if(tts.isSpeaking()) {
+                   Intent intent = new Intent(MainActivity.this, SAM.class);
+                   startActivity(intent);
+                   finish();
+               }
+
+               return false;
+           }
+       });
+
+
+
+       NavigatorRightHad.setOnLongClickListener(new View.OnLongClickListener() {
+           @Override
+           public boolean onLongClick(View v) {
+               v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+               tts.speak("Switching to HAD",TextToSpeech.QUEUE_FLUSH,null);
+               if(tts.isSpeaking()){
+
+                   Intent intent = new Intent(MainActivity.this, HearingAssist.class);
+                   startActivity(intent);
+                   finish();
+
+               }
+
+               return false;
+           }
+       });
+
+        navRight.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                tts.speak("Switching to HAD",TextToSpeech.QUEUE_FLUSH,null);
+                if(tts.isSpeaking()){
+
+                    Intent intent = new Intent(MainActivity.this, HearingAssist.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+
+
+
+                return false;
+            }
+        });
+
 
 
 
