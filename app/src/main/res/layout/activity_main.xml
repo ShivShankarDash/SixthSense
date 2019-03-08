@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:background="#000000">
+
+    <com.wonderkiln.camerakit.CameraView
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="510dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+
+        />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/camButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="173dp"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        fancy:fb_borderColor="#00E5FF"
+        fancy:fb_defaultColor="#FFFFFF"
+        fancy:fb_focusColor="#313131"
+        fancy:fb_fontIconSize="30dp"
+        fancy:fb_iconPaddingLeft="0dp"
+        fancy:fb_iconPaddingRight="0dp"
+        fancy:fb_iconResource="@drawable/camera_icon"
+        fancy:fb_radius="80dp" />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/fancyButtonocr"
+        android:layout_width="75dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="63dp"
+        app:layout_constraintBottom_toTopOf="@+id/navSam"
+        app:layout_constraintEnd_toStartOf="@+id/camButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        fancy:fb_defaultColor="#FFFFFF"
+        fancy:fb_radius="80dp"
+        fancy:fb_text="OCR"
+        fancy:fb_textColor="#00E5FF" />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/fancyVision"
+        android:layout_width="75dp"
+        android:layout_height="42dp"
+        app:layout_constraintBottom_toBottomOf="@+id/camButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/camButton"
+        fancy:fb_defaultColor="#FFFFFF"
+        fancy:fb_radius="80dp"
+        fancy:fb_text="VISION"
+        fancy:fb_textColor="#00E5FF" />
+
+
+
+
+    <TextView
+        android:layout_width="83dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="27dp"
+        android:id="@+id/navSam"
+
+        android:text="S.A.M."
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camButton" />
+
+
+
+
+</android.support.constraint.ConstraintLayout>
